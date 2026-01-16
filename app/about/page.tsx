@@ -97,7 +97,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Testimonials Section */}
-                <section className="py-10 bg-slate-100/50">
+                <section className="py-10">
                     <div className="container px-4 md:px-6 text-center mb-12">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Patient Stories</h2>
                         <div className="flex items-center justify-center gap-2 text-yellow-500 mb-4">

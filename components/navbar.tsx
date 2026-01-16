@@ -48,6 +48,7 @@ export function Navbar() {
     const getLinkHref = (item: string) => {
         const sectionId = item.toLowerCase().replace(" ", "-")
         if (item === "Services") return "/services"
+        if (item === "About") return "/about"
         return isHome ? `#${sectionId}` : `/#${sectionId}`
     }
 
@@ -105,7 +106,7 @@ export function Navbar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 bg-background md:hidden"
+                        className="fixed inset-0 z-[100] bg-white md:hidden"
                     >
                         <div className="container flex h-20 items-center justify-between px-4">
                             <Link href="/" className="flex items-center gap-2" onClick={toggleMenu}>
