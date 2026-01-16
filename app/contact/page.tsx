@@ -1,155 +1,320 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
-    const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        phone: "",
+        treatment: "",
+        date: "",
+        time: "",
+        notes: "",
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({ ...prev, [id]: value }));
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert("Thank you for reaching out! We will contact you shortly to schedule your appointment.");
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        const whatsappNumber = "918237156777";
+
+        // Format the date if it exists
+        const formattedDate = formData.date ? new Date(formData.date).toLocaleDateString('en-GB') : 'Not specified';
+
+        const text = `*New Appointment Request* 🦷
+
+*Patient Details*
+Name: ${formData.fullName}
+Phone: ${formData.phone}
+Email: ${formData.email || "Not provided"}
+
+*Appointment Preferences*
+Treatment: ${formData.treatment}
+Date: ${formattedDate}
+Time: ${formData.time}
+
+*Notes*
+${formData.notes || "None"}`;
+
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
     };
 
+    const fadeIn = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    };
+
+    // Refined Input Styles for Premium Feel
+    const inputClasses = "h-14 w-full border border-slate-200 bg-slate-50 rounded-xl px-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-slate-400 text-slate-800 text-base shadow-sm";
+    const labelClasses = "text-sm font-semibold text-slate-600 mb-2 block ml-1";
+
     return (
-        <div className="bg-slate-50 min-h-screen">
-            {/* Header */}
-            <section className="bg-gradient-to-br from-primary/10 to-emerald-50 py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl font-bold text-slate-900 mb-4">Book Your Appointment</h1>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Ready for a healthier, brighter smile? Schedule your visit today and experience trusted dental care at Dentistree Dental Clinic.
-                    </p>
+        <div className="flex flex-col min-h-screen bg-slate-50">
+            <Navbar />
+
+            {/* Mobile-First Hero Section */}
+            <section className="relative w-full bg-slate-900 flex items-center justify-center overflow-hidden py-16 lg:py-0 lg:h-[60vh] lg:min-h-[500px]">
+                {/* Background Image & Overlay */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/60 to-slate-900"></div>
+                </div>
+
+                {/* Content */}
+                <div className="container px-4 mx-auto relative z-10 text-center">
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeIn}
+                        className="max-w-3xl mx-auto space-y-6"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            </span>
+                            <span className="text-sm font-medium tracking-wide">Accepting New Patients</span>
+                        </div>
+
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
+                            Start Your Journey to a <br className="hidden md:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-emerald-300">Perfect Smile</span>
+                        </h1>
+
+                        <p className="text-slate-300 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                            Book your appointment online easily. We are here to provide world-class dental care.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Contact Info */}
-                    <div className="lg:col-span-1 space-y-6">
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                            <h3 className="text-xl font-bold text-slate-900 mb-6">📍 Clinic Location</h3>
-                            <div className="space-y-4">
-                                <div>
-                                    <h4 className="font-semibold text-slate-900">Address</h4>
-                                    <p className="text-slate-600">Nanded City, Sinhagad Road<br />Pune, Maharashtra</p>
+            {/* Main Content Area */}
+            <div className="container px-4 mx-auto pb-20 -mt-6 lg:-mt-32 relative z-20">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-7xl mx-auto">
+
+                    {/* Appointment Form (Priority on Mobile) */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="lg:col-span-7 order-1 lg:order-2"
+                    >
+                        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-10 border border-slate-100 overflow-hidden relative">
+                            {/* Subtle Decor */}
+                            <div className="absolute top-0 right-0 w-40 h-40 bg-blue-50/80 rounded-bl-full -mr-10 -mt-10 z-0"></div>
+
+                            <div className="relative z-10 text-center mb-10">
+                                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Book Your Slot</h2>
+                                <p className="text-slate-500">Fill in the form below to schedule your visit.</p>
+                            </div>
+
+                            <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+                                {/* Personal Details */}
+                                <div className="grid md:grid-cols-2 gap-5">
+                                    <div className="space-y-1">
+                                        <Label htmlFor="fullName" className={labelClasses}>Full Name *</Label>
+                                        <Input
+                                            id="fullName"
+                                            required
+                                            className={inputClasses}
+                                            placeholder="Ex: John Doe"
+                                            value={formData.fullName}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <Label htmlFor="phone" className={labelClasses}>Phone Number *</Label>
+                                        <Input
+                                            type="tel"
+                                            id="phone"
+                                            required
+                                            className={inputClasses}
+                                            placeholder="Ex: +91 98765 43210"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <h4 className="font-semibold text-slate-900">📞 Phone</h4>
-                                    <p className="text-slate-600">
-                                        <a href="tel:+919876543210" className="hover:text-primary transition-colors font-medium">
-                                            +91 98765 43210
-                                        </a>
-                                    </p>
+                                <div className="space-y-1">
+                                    <Label htmlFor="email" className={labelClasses}>Email Address (Optional)</Label>
+                                    <Input
+                                        type="email"
+                                        id="email"
+                                        className={inputClasses}
+                                        placeholder="john@example.com"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                    />
                                 </div>
 
-                                <div>
-                                    <h4 className="font-semibold text-slate-900">📧 Email</h4>
-                                    <p className="text-slate-600">
-                                        <a href="mailto:info@dentistreedental.com" className="hover:text-primary transition-colors">
-                                            info@dentistreedental.com
+                                {/* Appointment Details */}
+                                <div className="space-y-1">
+                                    <Label htmlFor="treatment" className={labelClasses}>Treatment *</Label>
+                                    <div className="relative">
+                                        <select
+                                            id="treatment"
+                                            required
+                                            className={`${inputClasses} appearance-none cursor-pointer bg-white`}
+                                            value={formData.treatment}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="" disabled>Select Treatment Type</option>
+                                            <option value="General Checkup">General Checkup</option>
+                                            <option value="Teeth Cleaning">Teeth Cleaning</option>
+                                            <option value="Root Canal">Root Canal</option>
+                                            <option value="Teeth Whitening">Teeth Whitening</option>
+                                            <option value="Dental Implants">Dental Implants</option>
+                                            <option value="Braces/Invisalign">Braces / Invisalign</option>
+                                            <option value="Kids Dentistry">Kids Dentistry</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-5">
+                                    <div className="space-y-1">
+                                        <Label htmlFor="date" className={labelClasses}>Preferred Date *</Label>
+                                        <Input
+                                            type="date"
+                                            id="date"
+                                            required
+                                            className={inputClasses}
+                                            value={formData.date}
+                                            onChange={handleChange}
+                                            min={new Date().toISOString().split("T")[0]}
+                                        />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <Label htmlFor="time" className={labelClasses}>Preferred Time *</Label>
+                                        <div className="relative">
+                                            <select
+                                                id="time"
+                                                required
+                                                className={`${inputClasses} appearance-none cursor-pointer bg-white`}
+                                                value={formData.time}
+                                                onChange={handleChange}
+                                            >
+                                                <option value="" disabled>Select Time Slot</option>
+                                                <option value="Morning (10AM - 1PM)">Morning (10AM - 1PM)</option>
+                                                <option value="Afternoon (1PM - 4PM)">Afternoon (1PM - 4PM)</option>
+                                                <option value="Evening (5PM - 9PM)">Evening (5PM - 9PM)</option>
+                                            </select>
+                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-1">
+                                    <Label htmlFor="notes" className={labelClasses}>Additional Notes</Label>
+                                    <Textarea
+                                        id="notes"
+                                        className="min-h-[120px] w-full border border-slate-200 bg-slate-50 rounded-xl p-4 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-base text-slate-800 placeholder:text-slate-400"
+                                        placeholder="Any specific questions or symptoms?"
+                                        value={formData.notes}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+
+                                <Button
+                                    className="w-full h-14 bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white rounded-xl shadow-lg shadow-slate-900/10 transition-all transform active:scale-[0.98] text-lg font-bold tracking-wide flex items-center justify-center gap-2 mt-4"
+                                    type="submit"
+                                >
+                                    Confirm Appointment
+                                    <Send className="w-5 h-5 ml-1" />
+                                </Button>
+                            </form>
+                        </div>
+                    </motion.div>
+
+                    {/* Contact Info (Second on Mobile) */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="lg:col-span-5 space-y-8 lg:sticky lg:top-32 order-2 lg:order-1"
+                    >
+                        {/* Info Card */}
+                        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 border border-slate-100">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-8 border-b border-slate-100 pb-4 text-center lg:text-left">Details</h3>
+
+                            <div className="space-y-8">
+                                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+                                    <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Our Location</span>
+                                        <p className="text-lg font-medium text-slate-800">
+                                            Nanded City, Sinhagad Road<br />
+                                            Pune, Maharashtra, 411041
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+                                    <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                                        <Phone className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Call Us</span>
+                                        <p className="text-lg font-medium text-slate-800">
+                                            +91 82371 56777
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+                                    <div className="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <div className="w-full min-w-0">
+                                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Email Us</span>
+                                        <a href="mailto:dentistree.pune@gmail.com" className="text-lg font-medium text-slate-800 hover:text-blue-600 transition-colors break-words">
+                                            dentistree.pune@gmail.com
                                         </a>
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                            <h3 className="text-xl font-bold text-slate-900 mb-4">🕒 Opening Hours</h3>
-                            <ul className="space-y-2 text-slate-600">
-                                <li className="flex justify-between">
-                                    <span>Monday - Friday</span>
-                                    <span className="font-medium">9:00 AM - 8:00 PM</span>
-                                </li>
-                                <li className="flex justify-between">
-                                    <span>Saturday</span>
-                                    <span className="font-medium">9:00 AM - 6:00 PM</span>
-                                </li>
-                                <li className="flex justify-between">
-                                    <span>Sunday</span>
-                                    <span className="font-medium text-red-500">Closed</span>
-                                </li>
-                            </ul>
+                        {/* Map */}
+                        <div className="h-[300px] w-full rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4490.983345762452!2d73.78167094077102!3d18.460213706848812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc29580a5c8612f%3A0xd16cce358b8cabfd!2sDentistree%20Clinic!5e0!3m2!1sen!2sin!4v1768597640729!5m2!1sen!2sin"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="grayscale hover:grayscale-0 transition-all duration-700"
+                            ></iframe>
                         </div>
 
-                        <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-xl">
-                            <h3 className="text-lg font-bold text-emerald-800 mb-2">🚨 Emergency Dental Care</h3>
-                            <p className="text-emerald-700 text-sm">
-                                For dental emergencies, please call us immediately. We prioritize same-day appointments for urgent cases.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Contact Form */}
-                    <div className="lg:col-span-2">
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Send us a Message</h3>
-                            <p className="text-slate-600 mb-6">Fill out the form below and we will get back to you shortly.</p>
-
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            required
-                                            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                            placeholder="Your full name"
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
-                                        <input
-                                            type="tel"
-                                            id="phone"
-                                            required
-                                            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                            placeholder="+91 XXXXX XXXXX"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                        placeholder="your@email.com"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">How can we help you? *</label>
-                                    <textarea
-                                        id="message"
-                                        rows={4}
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                                        placeholder="Describe your dental concern or the service you're interested in..."
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    ></textarea>
-                                </div>
-
-                                <div className="pt-2">
-                                    <button type="submit" className="w-full md:w-auto bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-600 transition-colors shadow-md">
-                                        Request Appointment
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 }

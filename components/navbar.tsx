@@ -49,6 +49,7 @@ export function Navbar() {
         const sectionId = item.toLowerCase().replace(" ", "-")
         if (item === "Services") return "/services"
         if (item === "About") return "/about"
+        if (item === "Why Us") return "/why-us"
         return isHome ? `#${sectionId}` : `/#${sectionId}`
     }
 

@@ -23,6 +23,7 @@ export function Footer() {
                         <nav className="flex flex-col gap-2 text-sm">
                             <Link href="/services" className="hover:text-primary transition-colors">Services</Link>
                             <Link href="/about" className="hover:text-primary transition-colors">About Us</Link>
+                            <Link href="/why-us" className="hover:text-primary transition-colors">Why Us</Link>
                             <Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link>
                             <Link href="/#contact" className="hover:text-primary transition-colors">Book Appointment</Link>
                         </nav>
