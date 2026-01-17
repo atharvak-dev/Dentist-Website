@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import Footer from "@/components/layout/Footer"
 
@@ -62,6 +63,20 @@ const galleryItems: FocusRailItem[] = [
         description: "Digital diagnostics and modern treatment methods",
         imageSrc: "/assests/2025-08-13.webp",
         meta: "Technology",
+    },
+    {
+        id: 6,
+        title: "Patient Smiles",
+        description: "Real results from our happy patients",
+        imageSrc: "/assests/client3.png",
+        meta: "Success Stories",
+    },
+    {
+        id: 7,
+        title: "Confident Grin",
+        description: "Restoring confidence one smile at a time",
+        imageSrc: "/assests/client4.png",
+        meta: "Success Stories",
     },
 ]
 
@@ -315,6 +330,83 @@ export default function ServicesPage() {
                             <ServiceCard key={idx} {...service} />
                         ))}
                     </motion.div>
+                </section>
+
+                {/* Modern Technology Section */}
+                <section className="py-20 md:py-28 bg-white overflow-hidden">
+                    <div className="container px-4 md:px-6">
+                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: { opacity: 0, x: -50 },
+                                    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+                                }}
+                                className="relative order-2 lg:order-1"
+                            >
+                                <div className="absolute -inset-4 bg-gradient-to-tr from-teal-100 to-blue-100 rounded-[2.5rem] -z-10 blur-2xl opacity-70" />
+                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white">
+                                    <div className="aspect-[4/3] relative">
+                                        <Image // Using next/image requires import from "next/image", ensuring it is used.
+                                            src="/assests/2025-08-13.webp"
+                                            alt="Advanced Dental Technology at Dentistree"
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                        />
+                                    </div>
+                                    <div className="absolute bottom-6 left-6 right-6">
+                                        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/50 flex items-center gap-4">
+                                            <div className="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                                                <Zap className="h-6 w-6 text-teal-600" />
+                                            </div>
+                                            <div>
+                                                <p className="font-semibold text-slate-800">Latest Equipment</p>
+                                                <p className="text-sm text-slate-600">For precise diagnosis</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={staggerContainer}
+                                className="order-1 lg:order-2"
+                            >
+                                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 border border-blue-100 mb-6">
+                                    <Activity className="h-4 w-4 text-blue-600" />
+                                    <span className="text-sm font-medium text-blue-700">Advanced Technology</span>
+                                </motion.div>
+                                <motion.h2 variants={fadeInUp} className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-800 mb-6">
+                                    Precision Care with Modern Tech
+                                </motion.h2>
+                                <motion.p variants={fadeInUp} className="text-lg text-slate-600 mb-8 leading-relaxed">
+                                    We believe that the best care is supported by the best technology. Our clinic is equipped with cutting-edge diagnostic and treatment tools to ensure every procedure is as safe, precise, and comfortable as possible.
+                                </motion.p>
+
+                                <motion.ul variants={fadeInUp} className="space-y-4">
+                                    {[
+                                        "Digital X-Rays for instant, low-radiation imaging",
+                                        "Rotary Endodontics for faster, better root canals",
+                                        "Intraoral Cameras for transparent diagnosis",
+                                        "Advanced Sterilization Autoclaves"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3">
+                                            <div className="mt-1 h-5 w-5 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                                                <Check className="h-3 w-3 text-teal-600" strokeWidth={3} />
+                                            </div>
+                                            <span className="text-slate-700">{item}</span>
+                                        </li>
+                                    ))}
+                                </motion.ul>
+                            </motion.div>
+                        </div>
+                    </div>
                 </section>
 
                 {/* CTA Section */}

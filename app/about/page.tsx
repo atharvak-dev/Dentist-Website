@@ -63,6 +63,20 @@ const galleryItems: FocusRailItem[] = [
         imageSrc: "/assests/2025-08-13.webp",
         meta: "Technology",
     },
+    {
+        id: 6,
+        title: "Patient Smiles",
+        description: "Real results from our happy patients",
+        imageSrc: "/assests/client3.png",
+        meta: "Success Stories",
+    },
+    {
+        id: 7,
+        title: "Confident Grin",
+        description: "Restoring confidence one smile at a time",
+        imageSrc: "/assests/client4.png",
+        meta: "Success Stories",
+    },
 ]
 
 // Premium animation variants

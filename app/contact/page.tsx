@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import Footer from "@/components/layout/Footer"
 
@@ -82,6 +83,62 @@ export default function ContactPage() {
                 {/* Main Content Area */}
                 <section className="py-10 md:py-16">
                     <div className="container px-4 md:px-6 mx-auto max-w-7xl">
+
+                        {/* Welcome Visual & Intro */}
+                        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-16 md:mb-24">
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8 }}
+                            >
+                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                                    <Image
+                                        src="/assests/Clinic2.png"
+                                        alt="Welcome to Dentistree"
+                                        width={800}
+                                        height={600}
+                                        className="object-cover w-full h-[300px] md:h-[400px]"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-8">
+                                        <div className="text-white">
+                                            <h3 className="text-2xl font-display font-semibold mb-2">Welcome to Dentistree</h3>
+                                            <p className="text-white/90">A warm, relaxing environment designed for your comfort.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="space-y-6"
+                            >
+                                <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-2 border border-teal-100">
+                                    <Sparkles className="h-4 w-4 text-teal-600" />
+                                    <span className="text-sm font-medium text-teal-700">Patient Experience</span>
+                                </div>
+                                <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-800">
+                                    Your Comfort is Our Priority
+                                </h2>
+                                <p className="text-lg text-slate-600 leading-relaxed">
+                                    We understand that visiting the dentist can be anxious for some. That's why we've designed our clinic to be a sanctuary of calm. From our waiting area to the treatment room, every detail is curated to help you relax.
+                                </p>
+                                <div className="flex items-center gap-4 pt-4">
+                                    <div className="flex -space-x-3">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="h-10 w-10 rounded-full border-2 border-white bg-slate-100 overflow-hidden relative">
+                                                <Image src="/assests/Patient.png" alt="Patient" fill className="object-cover" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="text-sm text-slate-600 font-medium">Join our happy patient family today!</p>
+                                </div>
+                            </motion.div>
+                        </div>
+
                         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
                             {/* Contact Info (First on larger screens, Second on mobile) */}
