@@ -75,7 +75,7 @@ ${formData.notes || "None"}`;
                         id="phone"
                         required
                         className={inputClasses}
-                        placeholder="Ex: +91 98765 43210"
+                        placeholder="Ex: +91 8237156777"
                         value={formData.phone}
                         onChange={handleChange}
                     />

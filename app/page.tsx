@@ -735,7 +735,7 @@ export default function Home() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-teal-500" />
-                  +91 (Add Number)
+                  +91 8237156777
                 </p>
                 <p className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-teal-500" />
