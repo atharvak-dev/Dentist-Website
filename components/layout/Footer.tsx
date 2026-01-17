@@ -43,7 +43,7 @@ export default function Footer() {
                             <li>Nanded City, Sinhagad Road</li>
                             <li>Pune, Maharashtra</li>
                             <li className="pt-2">
-                                <a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 98765 43210</a>
+                                <a href="tel:+918237156777" className="hover:text-primary transition-colors">+91 82371 56777</a>
                             </li>
                             <li>
                                 <a href="mailto:info@dentistreedental.com" className="hover:text-primary transition-colors">info@dentistreedental.com</a>

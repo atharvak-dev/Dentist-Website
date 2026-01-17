@@ -607,7 +607,7 @@ export default function Home() {
                   <div className="relative z-10 space-y-4 pt-4">
                     {[
                       { icon: <MapPin className="h-5 w-5" />, title: "Visit Us", info: "Nanded City, Sinhagad Road, Pune" },
-                      { icon: <Phone className="h-5 w-5" />, title: "Call Us", info: "+91 (Add Number Here)" },
+                      { icon: <Phone className="h-5 w-5" />, title: "Call Us", info: "+91 82371 56777" },
                       { icon: <Clock className="h-5 w-5" />, title: "Timings", info: "Mon - Sat: 10:00 AM - 8:00 PM" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">

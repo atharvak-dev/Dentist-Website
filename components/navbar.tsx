@@ -123,7 +123,7 @@ export function Navbar() {
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-4">
                         <Link
-                            href="tel:+910000000000"
+                            href="tel:+918237156777"
                             className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors"
                         >
                             <div className="h-8 w-8 rounded-full bg-teal-50 flex items-center justify-center">
@@ -244,7 +244,7 @@ export function Navbar() {
                             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white to-transparent">
                                 <div className="space-y-3">
                                     <Link
-                                        href="tel:+910000000000"
+                                        href="tel:+918237156777"
                                         className="flex items-center justify-center gap-2 p-4 rounded-xl border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors"
                                         onClick={toggleMenu}
                                     >

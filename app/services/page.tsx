@@ -359,7 +359,7 @@ export default function ServicesPage() {
                                     className="rounded-full px-8 py-6 text-base font-medium border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                                     asChild
                                 >
-                                    <Link href="tel:+910000000000">
+                                    <Link href="tel:+918237156777">
                                         <Phone className="mr-2 h-5 w-5" />
                                         Call Now
                                     </Link>
