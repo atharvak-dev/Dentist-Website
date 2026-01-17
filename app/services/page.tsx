@@ -235,7 +235,7 @@ export default function ServicesPage() {
 
             <main className="flex-1">
                 {/* Hero Header */}
-                <section className="relative py-20 lg:py-28 overflow-hidden gradient-hero">
+                <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden gradient-hero">
                     {/* Decorative elements */}
                     <div className="absolute top-10 right-10 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl" />

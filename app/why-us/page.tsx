@@ -122,7 +122,7 @@ export default function WhyUsPage() {
 
             <main className="flex-1">
                 {/* Hero Section */}
-                <section className="relative py-12 lg:py-16 overflow-hidden gradient-hero">
+                <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-16 overflow-hidden gradient-hero">
                     {/* Decorative elements */}
                     <div className="absolute top-10 left-10 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl" />
                     <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl" />

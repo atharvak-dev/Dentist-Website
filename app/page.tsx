@@ -86,7 +86,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section - Premium Elegant Design */}
-        <section className="relative overflow-hidden pt-8 pb-16 md:pt-12 md:pb-24 lg:pt-16 lg:pb-32 gradient-hero">
+        <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 gradient-hero">
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl" />
@@ -96,8 +96,7 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
               <motion.div
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                animate="visible"
                 variants={staggerContainer}
                 className="flex flex-col justify-center space-y-6"
               >
