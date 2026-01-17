@@ -26,59 +26,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// Clinic gallery images
-const galleryItems: FocusRailItem[] = [
-    {
-        id: 1,
-        title: "Modern Treatment Room",
-        description: "State-of-the-art dental equipment for precise treatments",
-        imageSrc: "/assests/clinic1.png",
-        meta: "Our Facility",
-    },
-    {
-        id: 2,
-        title: "Reception & Waiting Area",
-        description: "Comfortable and welcoming space for our patients",
-        imageSrc: "/assests/Clinic2.png",
-        meta: "Our Facility",
-    },
-    {
-        id: 3,
-        title: "About Dentistree",
-        description: "15+ years of trusted dental care excellence",
-        imageSrc: "/assests/AboutUs.png",
-        meta: "Our Clinic",
-    },
-    {
-        id: 4,
-        title: "Happy Patients",
-        description: "Thousands of smiles we've transformed",
-        imageSrc: "/assests/Patient.png",
-        meta: "Patient Care",
-    },
-    {
-        id: 5,
-        title: "Advanced Technology",
-        description: "Digital diagnostics and modern treatment methods",
-        imageSrc: "/assests/2025-08-13.webp",
-        meta: "Technology",
-    },
-    {
-        id: 6,
-        title: "Patient Smiles",
-        description: "Real results from our happy patients",
-        imageSrc: "/assests/client3.png",
-        meta: "Success Stories",
-    },
-    {
-        id: 7,
-        title: "Confident Grin",
-        description: "Restoring confidence one smile at a time",
-        imageSrc: "/assests/client4.png",
-        meta: "Success Stories",
-    },
-]
-
 // Premium animation variants
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -357,43 +304,6 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* Clinic Gallery Section */}
-                <section className="py-16 md:py-24 bg-[#faf8f5]">
-                    <div className="container px-4 md:px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-center mb-10"
-                        >
-                            <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-2 border border-teal-100 mb-4">
-                                <Images className="h-4 w-4 text-teal-600" />
-                                <span className="text-sm font-medium text-teal-700">Our Clinic</span>
-                            </div>
-                            <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-800 mb-4">
-                                Take a Tour of Dentistree
-                            </h2>
-                            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                                Explore our modern facility designed for your comfort and care.
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            <FocusRail
-                                items={galleryItems}
-                                autoPlay={true}
-                                interval={5000}
-                                loop={true}
-                            />
-                        </motion.div>
-                    </div>
-                </section>
-
                 {/* Testimonials Section */}
                 <section className="py-16 md:py-24 bg-[#faf8f5]">
                     <div className="container px-4 md:px-6 text-center mb-12">
@@ -426,6 +336,25 @@ export default function AboutPage() {
 
                     <div className="max-w-[1400px] mx-auto overflow-hidden">
                         <StaggerTestimonials />
+
+                        <div className="flex justify-center mt-12 px-4">
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="w-full sm:w-auto rounded-full px-6 py-6 text-sm sm:text-base font-medium border-2 border-slate-200 text-slate-700 hover:bg-white hover:border-amber-400 hover:text-amber-600 shadow-sm transition-all duration-300 group"
+                                asChild
+                            >
+                                <Link
+                                    href="https://www.google.com/maps/place/Dentistree+Clinic/@18.4613241,73.7877501,16.25z/data=!4m8!3m7!1s0x3bc29580a5c8612f:0xd16cce358b8cabfd!8m2!3d18.4605837!4d73.7864175!9m1!1b1!16s%2Fg%2F11w_z2txhd?hl=en&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2"
+                                >
+                                    <MapPin className="h-5 w-5 text-slate-400 group-hover:text-amber-500 transition-colors" />
+                                    <span>See Real Testimonials on Google Maps</span>
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
                 </section>
 
