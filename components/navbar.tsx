@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -38,14 +38,33 @@ const navItems = [
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
+    const lastScrollY = useRef(0)
     const pathname = usePathname()
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20)
+            const currentScrollY = window.scrollY
+
+            // Determine if scrolled from top (for styling)
+            setScrolled(currentScrollY > 20)
+
+            // Determine scroll direction for visibility
+            // We use a small buffer to prevent jitter
+            if (currentScrollY < 10) {
+                setIsVisible(true)
+            } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+                // Scrolling down
+                setIsVisible(false)
+            } else if (currentScrollY < lastScrollY.current) {
+                // Scrolling up
+                setIsVisible(true)
+            }
+
+            lastScrollY.current = currentScrollY
         }
 
-        window.addEventListener("scroll", handleScroll)
+        window.addEventListener("scroll", handleScroll, { passive: true })
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
@@ -56,10 +75,10 @@ export function Navbar() {
     return (
         <>
             <motion.header
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
+                initial={{ y: 0 }}
+                animate={{ y: isVisible ? 0 : -100 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300 ${scrolled
                     ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
                     : "bg-[#faf8f5]/80 backdrop-blur-sm"
                     }`}

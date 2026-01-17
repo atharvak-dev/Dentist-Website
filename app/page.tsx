@@ -5,9 +5,9 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/navbar"
 import { AppointmentForm } from "@/components/appointment-form"
-import HeroImage from "../assests/doctor.png"
-import AboutImage from "../assests/AboutUs.png"
-import Clinic1 from "../assests/clinic1.png"
+const HeroImage = "/assests/doctor.png"
+const AboutImage = "/assests/AboutUs.png"
+const Clinic1 = "/assests/clinic1.png"
 import {
   ArrowRight,
   Mail,
@@ -201,6 +201,7 @@ export default function Home() {
                       fill
                       className="object-cover"
                       priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     {/* Subtle overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
@@ -291,6 +292,7 @@ export default function Home() {
                       alt="Dr. Poonam Bambarkar"
                       fill
                       className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
                   </div>
@@ -549,6 +551,7 @@ export default function Home() {
                       alt="Dentistree Clinic Interior"
                       fill
                       className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
                 </div>

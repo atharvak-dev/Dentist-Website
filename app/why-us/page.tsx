@@ -7,7 +7,7 @@ import { Navbar } from "@/components/navbar"
 import Footer from "@/components/layout/Footer"
 
 import { Button } from "@/components/ui/button"
-import Clinic1 from "../../assests/clinic1.png"
+const Clinic1 = "/assests/clinic1.png"
 import {
     ShieldCheck,
     Stethoscope,
@@ -185,6 +185,7 @@ export default function WhyUsPage() {
                                         alt="Dentistree Clinic"
                                         fill
                                         className="object-cover"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
                                 </div>

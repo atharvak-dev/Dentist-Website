@@ -53,7 +53,7 @@ const galleryItems: FocusRailItem[] = [
         id: 4,
         title: "Happy Patients",
         description: "Thousands of smiles we've transformed",
-        imageSrc: "/assests/2025-03-10.jpg",
+        imageSrc: "/assests/Patient.png",
         meta: "Patient Care",
     },
     {

@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export type FocusRailItem = {
@@ -212,10 +213,12 @@ export function FocusRail({
                                     if (offset !== 0) setActive((p) => p + offset);
                                 }}
                             >
-                                <img
+                                <Image
                                     src={item.imageSrc}
                                     alt={item.title}
-                                    className="h-full w-full rounded-2xl object-cover pointer-events-none"
+                                    fill
+                                    className="rounded-2xl object-cover pointer-events-none"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
 
                                 {/* Lighting layers */}

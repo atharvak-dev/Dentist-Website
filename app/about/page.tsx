@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer"
 import { StaggerTestimonials } from "@/components/stagger-testimonials"
 import { FocusRail, FocusRailItem } from "@/components/focus-rail"
 import { motion } from "framer-motion"
-import Clinic2 from "../../assests/Clinic2.png"
+const Clinic2 = "/assests/Clinic2.png"
 import {
     MapPin,
     ShieldCheck,
@@ -53,7 +53,7 @@ const galleryItems: FocusRailItem[] = [
         id: 4,
         title: "Happy Patients",
         description: "Thousands of smiles we've transformed",
-        imageSrc: "/assests/2025-03-10.jpg",
+        imageSrc: "/assests/Patient.png",
         meta: "Patient Care",
     },
     {
@@ -168,6 +168,7 @@ export default function AboutPage() {
                                         alt="Dr. Poonam Bambarkar"
                                         fill
                                         className="object-cover"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                     {/* Overlay with info */}
                                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 via-slate-900/60 to-transparent p-6 md:p-8">
