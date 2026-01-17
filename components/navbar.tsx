@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Smile, ChevronRight } from "lucide-react"
+import { Menu, X, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const staggerContainer = {
@@ -66,11 +67,17 @@ export function Navbar() {
                 <div className="container flex h-20 items-center justify-between px-4 md:px-6">
                     <Link href="/" className="flex items-center gap-2">
                         <motion.div
-                            whileHover={{ rotate: 5, scale: 1.1 }}
+                            whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground"
+                            className="relative h-9 w-9"
                         >
-                            <Smile className="h-6 w-6" />
+                            <Image
+                                src="/assests/103386.png"
+                                alt="Dentistree Logo"
+                                width={36}
+                                height={36}
+                                className="object-contain"
+                            />
                         </motion.div>
                         <div className="flex flex-col">
                             <span className="text-xl font-bold leading-none text-primary">Dentistree</span>
@@ -112,8 +119,14 @@ export function Navbar() {
                     >
                         <div className="container flex h-20 items-center justify-between px-4">
                             <Link href="/" className="flex items-center gap-2" onClick={toggleMenu}>
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                                    <Smile className="h-6 w-6" />
+                                <div className="relative h-9 w-9">
+                                    <Image
+                                        src="/assests/103386.png"
+                                        alt="Dentistree Logo"
+                                        width={36}
+                                        height={36}
+                                        className="object-contain"
+                                    />
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-xl font-bold leading-none text-primary">Dentistree</span>

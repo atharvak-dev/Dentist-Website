@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Smile, Facebook, Instagram, Linkedin, MapPin, Phone, Clock } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Clock } from "lucide-react"
 
 export function Footer() {
     return (
@@ -8,10 +9,14 @@ export function Footer() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                     {/* Brand */}
                     <div className="lg:col-span-1 space-y-5">
-                        <div className="flex items-center gap-3">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-xl gradient-primary text-white shadow-lg">
-                                <Smile className="h-6 w-6" />
-                            </div>
+                        <div className="flex items-center gap-2">
+                            <Image
+                                src="/assests/103386.png"
+                                alt="Dentistree Logo"
+                                width={40}
+                                height={40}
+                                className="object-contain"
+                            />
                             <span className="font-display text-xl font-semibold text-white">Dentistree</span>
                         </div>
                         <p className="text-slate-400 leading-relaxed">

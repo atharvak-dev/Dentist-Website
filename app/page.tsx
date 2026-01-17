@@ -196,7 +196,7 @@ export default function Home() {
                   {/* Main Image Container */}
                   <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/50">
                     <Image
-                      src={HeroImage}
+                      src={AboutImage}
                       alt="Dr. Poonam Bambarkar at Dentistree Clinic"
                       fill
                       className="object-cover"
@@ -287,7 +287,7 @@ export default function Home() {
 
                   <div className="relative h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden shadow-2xl">
                     <Image
-                      src={AboutImage}
+                      src={HeroImage}
                       alt="Dr. Poonam Bambarkar"
                       fill
                       className="object-cover"
