@@ -221,22 +221,22 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-6 mt-16">
               {[
                 {
-                  title: "Smile Makeovers",
-                  desc: "Veneers, whitening, and design for the smile you've always wanted.",
-                  icon: Sparkles,
-                  for: "Cosmetic Dentistry"
-                },
-                {
-                  title: "Permanent Replacements",
-                  desc: "Advanced implants that look, feel, and function exactly like natural teeth.",
-                  icon: Award,
-                  for: "Dental Implants"
-                },
-                {
-                  title: "Pain-Free Root Canals",
+                  title: "Root Canal Treatment",
                   desc: "Save your natural tooth with our advanced rotary technology and comfort protocols.",
-                  icon: CheckCircle2,
+                  icon: Zap,
                   for: "Endodontics"
+                },
+                {
+                  title: "Fillings, Crowns & Bridges",
+                  desc: "Restore damaged teeth with durable, natural-looking materials for long-lasting function.",
+                  icon: Shield,
+                  for: "Restorative Dentistry"
+                },
+                {
+                  title: "Pediatric (children) Dental Treatments",
+                  desc: "Fun, gentle care for your little ones to build healthy habits.",
+                  icon: Baby,
+                  for: "Pediatric Dentistry"
                 }
               ].map((item, i) => (
                 <motion.div

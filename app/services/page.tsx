@@ -21,10 +21,12 @@ import {
     ArrowRight,
     Check,
     Phone,
-    Calendar,
-    Stethoscope,
     Star,
-    ArrowUpRight
+    ArrowUpRight,
+    Award,
+    Heart,
+    Users,
+    Microscope
 } from "lucide-react"
 
 // --- Data & Assets ---
@@ -48,7 +50,7 @@ const galleryItems: FocusRailItem[] = [
         id: 3,
         title: "Expert Care",
         description: "Dr. Poonam Bambarkar",
-        imageSrc: "/assests/AboutUs.png",
+        imageSrc: "/assests/client-10.jpeg",
         meta: "Team",
     },
     {
@@ -62,55 +64,76 @@ const galleryItems: FocusRailItem[] = [
         id: 5,
         title: "Advanced Technology",
         description: "Digital diagnostics",
-        imageSrc: "/assests/2025-08-13.webp",
+        imageSrc: "/assests/client-6.png",
         meta: "Tech",
     },
 ]
 
 const services = [
     {
-        id: "ortho",
-        title: "Orthodontics & Aligners",
-        description: "Straighten your teeth discreetly with clear aligners or traditional braces. Perfect for all ages.",
-        icon: Smile,
-        featured: true, // Editorial Grid: This one is special
-        features: ["Invisalign Certified", "Metal & Ceramic Braces", "Retainers"],
+        id: "rootcanal",
+        title: "Root Canal Treatment",
+        description: "Save your natural tooth with our advanced rotary technology and comfort protocols.",
+        icon: Zap,
+        featured: true,
+        features: ["Microscopic Endo", "Single Visit", "Painless"],
+    },
+    {
+        id: "restorative",
+        title: "Fillings, Crowns & Bridges",
+        description: "Restore damaged teeth with durable, natural-looking materials for long-lasting function.",
+        icon: Shield,
+        features: ["Zirconia Crowns", "Composite Fillings", "5-Year Warranty"],
     },
     {
         id: "cosmetic",
-        title: "Cosmetic Dentistry",
-        description: "Veneers, whitening, and smile design to give you the confidence you deserve.",
+        title: "Tooth Cleaning & Whitening",
+        description: "Professional cleaning and whitening for a brighter, healthier smile.",
         icon: Sparkles,
-        features: ["Porcelain Veneers", "Zoom Whitening", "Gum Contouring"],
+        features: ["Zoom Whitening", "Deep Cleaning", "Stain Removal"],
     },
     {
         id: "implants",
         title: "Dental Implants",
         description: "Permanent, natural-looking replacements for missing teeth.",
-        icon: Zap,
-        features: ["Titanium Implants", "Bone Grafting", "Full Mouth Rehab"],
+        icon: Award,
+        features: ["Titanium Implants", "Bone Grafting", "Lifetime Warranty"],
     },
     {
-        id: "rootcanal",
-        title: "Root Canal Therapy",
-        description: "Save your natural tooth with pain-free, single-sitting rotary endodontics.",
-        icon: Activity,
-        features: ["Microscopic Endo", "Single Visit", "Painless"],
+        id: "ortho",
+        title: "Braces Treatment",
+        description: "Straighten your teeth with modern braces and invisible aligners.",
+        icon: Star,
+        features: ["Invisalign", "Metal Braces", "Retainers"],
     },
     {
-        id: "crowns",
-        title: "Crowns & Bridges",
-        description: "Restore damaged teeth with high-strength zirconia and ceramic solutions.",
-        icon: Crown,
-        features: ["Zirconia", "E-Max", "5-Year Warranty"],
-    },
-    {
-        id: "kids",
+        id: "pediatric",
         title: "Pediatric Dentistry",
-        description: "Gentle, fun, and preventive care for your little ones.",
+        description: "Fun, gentle care for your little ones to build healthy habits.",
         icon: Baby,
-        features: ["Fluoride Varnish", "Sealants", "Habit Breaking"],
+        features: ["Fluoride Varnish", "Sealants", "No-Tears Care"],
     },
+    {
+        id: "oral-surgery",
+        title: "Extraction & Replacement",
+        description: "Gentle extractions and immediate replacement options when necessary.",
+        icon: Heart,
+        features: ["Wisdom Teeth", "Painless Extraction", "Socket Preservation"],
+    },
+    {
+        id: "prosthodontics",
+        title: "Full / Partial Denture",
+        description: "Comfortable, custom-fitted dentures to restore your smile and function.",
+        icon: Users,
+        features: ["BPS Dentures", "Flexible partials", "Implant-supported"],
+    },
+    {
+        id: "diagnostics",
+        title: "Digital X-Ray",
+        description: "Low-radiation, high-precision imaging for accurate diagnosis.",
+        icon: Microscope,
+        features: ["RVG Sensors", "OPG", "Instant Results"],
+    }
 ]
 
 // --- Components ---
@@ -392,6 +415,97 @@ export default function ServicesPage() {
                                 </div>
                             </motion.div>
 
+                        </div>
+                    </div>
+                </section>
+
+
+                {/* 
+                  === CLINIC VIDEO SHOWCASE (Cinematic Experience) ===
+                */}
+                <section className="py-24 bg-white overflow-hidden">
+                    <div className="container px-4 md:px-6">
+                        <SectionHeader
+                            center
+                            label="Clinic Experience"
+                            title="See the Difference"
+                            subtitle="Take a virtual tour of our state-of-the-art facility where comfort meets clinical excellence."
+                        />
+
+                        {/* Bento Grid Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 h-auto lg:h-[600px]">
+
+                            {/* Main Feature Video (Left - 2/3 width) */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.7 }}
+                                className="lg:col-span-2 relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 group"
+                            >
+                                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors duration-500 z-10" />
+                                <video
+                                    src="/assests/clinic-video-1.mp4"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                                />
+                                {/* Floating Badge */}
+                                <div className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">Live Tour</span>
+                                </div>
+                            </motion.div>
+
+                            {/* Secondary Videos Stack (Right - 1/3 width) */}
+                            <div className="flex flex-col gap-6 lg:gap-8">
+
+                                {/* Top Right */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.7, delay: 0.2 }}
+                                    className="flex-1 relative rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200 group"
+                                >
+                                    <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors duration-500 z-10" />
+                                    <video
+                                        src="/assests/clinic-video-2.mp4"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                                    />
+                                    <div className="absolute bottom-4 left-4 z-20">
+                                        <p className="text-white font-medium text-sm drop-shadow-md">Advanced Diagnostics</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Bottom Right */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.7, delay: 0.4 }}
+                                    className="flex-1 relative rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200 group"
+                                >
+                                    <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors duration-500 z-10" />
+                                    <video
+                                        src="/assests/clinic-video-3.mp4"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                                    />
+                                    <div className="absolute bottom-4 left-4 z-20">
+                                        <p className="text-white font-medium text-sm drop-shadow-md">Sterilization Protocols</p>
+                                    </div>
+                                </motion.div>
+                            </div>
                         </div>
                     </div>
                 </section>
