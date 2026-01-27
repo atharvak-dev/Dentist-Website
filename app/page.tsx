@@ -79,7 +79,7 @@ export default function Home() {
       {/* Navbar now includes Announcement Bar and fixed positioning */}
       <Navbar />
 
-      <main className="flex-1 pt-24 md:pt-32"> {/* Increased padding to clear fixed headers */}
+      <main className="flex-1 pt-20"> {/* Increased padding to clear fixed headers */}
 
         {/* 
                   === HERO SECTION: EMOTIONAL HOOK ===
