@@ -24,6 +24,7 @@ import {
     Video
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { JsonLd } from "@/components/seo/json-ld"
 
 // --- Animation Variants ---
 
@@ -51,8 +52,30 @@ export default function AboutPage() {
     const { scrollYProgress } = useScroll()
     const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1])
 
+    const doctorSchema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Poonam Bambarkar",
+        "jobTitle": "Chief Dentist & Cosmetic Specialist",
+        "url": "https://dentistreepune.com/about",
+        "image": "https://dentistreepune.com/assests/doctor.png",
+        "worksFor": {
+            "@type": "Dentist",
+            "name": "Dentistree Dental Clinic"
+        },
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Maharashtra University of Health Sciences"
+            }
+        ],
+        "knowsAbout": ["Cosmetic Dentistry", "Endodontics", "Pediatric Dentistry", "Smile Design"],
+        "description": "Dr. Poonam Bambarkar is a leading dentist in Pune with over 15 years of experience, specializing in cosmetic and pediatric dentistry."
+    }
+
     return (
         <div className="bg-white min-h-screen flex flex-col font-sans selection:bg-teal-100 selection:text-teal-900">
+            <JsonLd data={doctorSchema} />
             <motion.div
                 style={{ scaleX }}
                 className="fixed top-0 left-0 right-0 h-1 bg-dental-teal origin-left z-50"
@@ -263,7 +286,7 @@ export default function AboutPage() {
                                         But more importantly, she understands the person behind the smile.
                                     </p>
                                     <p>
-                                        Since earning her degree, she has treated over 12,000 patients. Her approach is simple: <span className="text-dental-teal font-medium">Listen first. Explain everything. Never judge.</span>
+                                        Since earning her <strong>Bachelor of Dental Surgery (B.D.S.)</strong> from the prestigious <em>Maharashtra University of Health Sciences</em> in 2009, she has treated over 12,000 patients. Her approach is simple: <span className="text-dental-teal font-medium">Listen first. Explain everything. Never judge.</span>
                                     </p>
                                     <p>
                                         Dr. Poonam has completed advanced training in pediatric behavior management and is passionate about making every child's dental journey positive. Her gentle approach has helped over 400 children overcome dental anxiety.
@@ -274,17 +297,35 @@ export default function AboutPage() {
                                     </p>
                                 </div>
 
-                                <div className="flex flex-wrap gap-4 pt-4">
-                                    {[
-                                        "Root Canal Specialist",
-                                        "Cosmetic Smile Design",
-                                        "Pediatric Friendly",
-                                        "Anxiety Management"
-                                    ].map((spec, i) => (
-                                        <span key={i} className="px-4 py-2 bg-white border border-stone-200 rounded-lg text-sm font-medium text-slate-700 shadow-sm">
-                                            {spec}
-                                        </span>
-                                    ))}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-slate-100 mt-6">
+                                    <div className="flex items-start gap-3">
+                                        <Award className="w-5 h-5 text-dental-teal mt-1 shrink-0" />
+                                        <div>
+                                            <div className="font-bold text-dental-charcoal text-sm">B.D.S. (2009)</div>
+                                            <div className="text-xs text-slate-500">Maharashtra University of Health Sciences</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <Sparkles className="w-5 h-5 text-dental-teal mt-1 shrink-0" />
+                                        <div>
+                                            <div className="font-bold text-dental-charcoal text-sm">Fellowship in Aesthetic Dentistry</div>
+                                            <div className="text-xs text-slate-500">Certified Specialist</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <Heart className="w-5 h-5 text-dental-teal mt-1 shrink-0" />
+                                        <div>
+                                            <div className="font-bold text-dental-charcoal text-sm">Pediatric Care Certificate</div>
+                                            <div className="text-xs text-slate-500">Behavior Management Expert</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <ShieldCheck className="w-5 h-5 text-dental-teal mt-1 shrink-0" />
+                                        <div>
+                                            <div className="font-bold text-dental-charcoal text-sm">Advanced Endodontics</div>
+                                            <div className="text-xs text-slate-500">Rotary & Microscope Certified</div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="pt-6">

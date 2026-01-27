@@ -228,49 +228,53 @@ export default function Home() {
                   title: "Root Canal Treatment",
                   desc: "Save your natural tooth with our advanced rotary technology and comfort protocols.",
                   icon: Zap,
-                  for: "Endodontics"
+                  for: "Endodontics",
+                  href: "/services/root-canal-treatment"
                 },
                 {
                   title: "Fillings, Crowns & Bridges",
                   desc: "Restore damaged teeth with durable, natural-looking materials for long-lasting function.",
                   icon: Shield,
-                  for: "Restorative Dentistry"
+                  for: "Restorative Dentistry",
+                  href: "/services"
                 },
                 {
                   title: "Pediatric (children) Dental Treatments",
                   desc: "Fun, gentle care for your little ones to build healthy habits.",
                   icon: Baby,
                   for: "Pediatric Dentistry",
-                  highlight: true
+                  highlight: true,
+                  href: "/services/pediatric-dentistry"
                 }
               ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`group relative rounded-3xl p-8 border transition-all duration-300 overflow-hidden
+                <Link key={i} href={item.href} className="block group h-full">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`relative rounded-3xl p-8 border transition-all duration-300 overflow-hidden h-full
                     ${item.highlight
-                      ? "bg-pediatric-cream border-pediatric-sage/50 shadow-lg hover:shadow-xl hover:border-pediatric-sage"
-                      : "bg-white border-stone-100 hover:shadow-2xl hover:border-teal-100"
-                    }`}
-                >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
+                        ? "bg-pediatric-cream border-pediatric-sage/50 shadow-lg hover:shadow-xl hover:border-pediatric-sage"
+                        : "bg-white border-stone-100 hover:shadow-xl hover:border-teal-100"
+                      }`}
+                  >
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
                     ${item.highlight ? "bg-pediatric-sage/20 text-dental-teal-dark" : "bg-dental-cream group-hover:bg-dental-teal text-amber-600 group-hover:text-white"}`}>
-                    <item.icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold text-dental-charcoal mb-2">{item.title}</h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">{item.desc}</p>
-
-                  <div className="pt-6 border-t border-slate-50 flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.for}</span>
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all 
-                      ${item.highlight ? "bg-white text-dental-teal shadow-sm" : "bg-slate-50 group-hover:bg-dental-teal group-hover:text-white"}`}>
-                      <ArrowRight className="w-4 h-4" />
+                      <item.icon className="w-7 h-7" />
                     </div>
-                  </div>
-                </motion.div>
+                    <h3 className="font-display text-2xl font-bold text-dental-charcoal mb-2">{item.title}</h3>
+                    <p className="text-slate-600 mb-6 leading-relaxed">{item.desc}</p>
+
+                    <div className="pt-6 border-t border-slate-50 flex items-center justify-between mt-auto">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.for}</span>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all 
+                      ${item.highlight ? "bg-white text-dental-teal shadow-sm" : "bg-slate-50 group-hover:bg-dental-teal group-hover:text-white"}`}>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 

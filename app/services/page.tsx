@@ -77,6 +77,7 @@ const services = [
         icon: Zap,
         featured: true,
         features: ["Microscopic Endo", "Single Visit", "Painless"],
+        href: "/services/root-canal-treatment"
     },
     {
         id: "restorative",
@@ -84,13 +85,15 @@ const services = [
         description: "Restore damaged teeth with durable, natural-looking materials for long-lasting function.",
         icon: Shield,
         features: ["Zirconia Crowns", "Composite Fillings", "5-Year Warranty"],
+        href: "/services" // Placeholder or create specific page if needed
     },
     {
         id: "cosmetic",
-        title: "Tooth Cleaning & Whitening",
-        description: "Professional cleaning and whitening for a brighter, healthier smile.",
+        title: "Cosmetic Dentistry", // Updated title to match page
+        description: "Professional cleaning, whitening, and veneers for a brighter, healthier smile.",
         icon: Sparkles,
-        features: ["Zoom Whitening", "Deep Cleaning", "Stain Removal"],
+        features: ["Zoom Whitening", "Veneers", "Smile Design"],
+        href: "/services/cosmetic-dentistry"
     },
     {
         id: "implants",
@@ -98,13 +101,15 @@ const services = [
         description: "Permanent, natural-looking replacements for missing teeth.",
         icon: Award,
         features: ["Titanium Implants", "Bone Grafting", "Lifetime Warranty"],
+        href: "/services/dental-implants"
     },
     {
         id: "ortho",
-        title: "Braces Treatment",
+        title: "Orthodontics & Braces",
         description: "Straighten your teeth with modern braces and invisible aligners.",
         icon: Star,
         features: ["Invisalign", "Metal Braces", "Retainers"],
+        href: "/services/orthodontics"
     },
     {
         id: "pediatric",
@@ -112,6 +117,7 @@ const services = [
         description: "Fun, gentle care for your little ones to build healthy habits.",
         icon: Baby,
         features: ["Fluoride Varnish", "Sealants", "No-Tears Care"],
+        href: "/services/pediatric-dentistry"
     },
     {
         id: "oral-surgery",
@@ -119,6 +125,7 @@ const services = [
         description: "Gentle extractions and immediate replacement options when necessary.",
         icon: Heart,
         features: ["Wisdom Teeth", "Painless Extraction", "Socket Preservation"],
+        href: "/services" // Placeholder
     },
     {
         id: "prosthodontics",
@@ -126,6 +133,7 @@ const services = [
         description: "Comfortable, custom-fitted dentures to restore your smile and function.",
         icon: Users,
         features: ["BPS Dentures", "Flexible partials", "Implant-supported"],
+        href: "/services" // Placeholder
     },
     {
         id: "diagnostics",
@@ -133,6 +141,7 @@ const services = [
         description: "Low-radiation, high-precision imaging for accurate diagnosis.",
         icon: Microscope,
         features: ["RVG Sensors", "OPG", "Instant Results"],
+        href: "/services" // Placeholder
     }
 ]
 
@@ -195,50 +204,52 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
     const isFeatured = service.featured
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className={`group relative flex flex-col p-8 rounded-3xl transition-all duration-500
+        <Link href={service.href} className={`block group relative h-full rounded-3xl transition-all duration-300 ${isFeatured ? "md:col-span-2" : ""}`}>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`flex flex-col p-8 h-full rounded-3xl transition-all duration-500
                 ${isFeatured
-                    ? "md:col-span-2 bg-gradient-to-br from-teal-50 to-white border border-teal-100/50 shadow-xl"
-                    : "bg-white border border-slate-100 hover:shadow-lg hover:border-teal-50"
-                }
+                        ? "bg-gradient-to-br from-teal-50 to-white border border-teal-100/50 shadow-xl"
+                        : "bg-white border border-slate-100 group-hover:shadow-lg group-hover:border-teal-50"
+                    }
             `}
-        >
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
+            >
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
                 ${isFeatured ? "bg-teal-600 text-white" : "bg-teal-50 text-teal-600 group-hover:bg-teal-100"}
             `}>
-                <service.icon className="w-7 h-7" />
-            </div>
-
-            <h3 className="font-display text-2xl font-semibold text-dental-charcoal mb-3">
-                {service.title}
-            </h3>
-
-            <p className="text-slate-600 leading-relaxed mb-8 flex-grow">
-                {service.description}
-            </p>
-
-            <ul className="space-y-3 mb-8">
-                {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                        <Check className="w-4 h-4 text-dental-teal" />
-                        {feature}
-                    </li>
-                ))}
-            </ul>
-
-            <div className="mt-auto pt-6 border-t border-slate-100/50 flex items-center justify-between">
-                <span className="text-sm font-semibold text-dental-teal group-hover:underline decoration-dental-teal/30 underline-offset-4">
-                    Learn More
-                </span>
-                <div className="w-8 h-8 rounded-full bg-white border border-slate-100 flex items-center justify-center group-hover:bg-dental-teal group-hover:text-white group-hover:border-transparent transition-all duration-300">
-                    <ArrowUpRight className="w-4 h-4" />
+                    <service.icon className="w-7 h-7" />
                 </div>
-            </div>
-        </motion.div>
+
+                <h3 className="font-display text-2xl font-semibold text-dental-charcoal mb-3">
+                    {service.title}
+                </h3>
+
+                <p className="text-slate-600 leading-relaxed mb-8 flex-grow">
+                    {service.description}
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm font-medium text-slate-700">
+                            <Check className="w-4 h-4 text-dental-teal" />
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+
+                <div className="mt-auto pt-6 border-t border-slate-100/50 flex items-center justify-between">
+                    <span className="text-sm font-semibold text-dental-teal group-hover:underline decoration-dental-teal/30 underline-offset-4">
+                        Learn More
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-white border border-slate-100 flex items-center justify-center group-hover:bg-dental-teal group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                        <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                </div>
+            </motion.div>
+        </Link>
     )
 }
 
