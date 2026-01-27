@@ -16,6 +16,7 @@ export function AppointmentForm() {
         date: "",
         time: "",
         notes: "",
+        bookingType: "Adult",
     });
 
     const [minDate, setMinDate] = useState("");
@@ -50,6 +51,12 @@ Phone: ${formData.phone}
 Email: ${formData.email || "Not provided"}
 
 *Appointment Preferences*
+Treatment: ${formData.treatment}
+Date: ${formattedDate}
+Time: ${formData.time}
+
+*Preferences*
+Booking For: ${formData.bookingType}
 Treatment: ${formData.treatment}
 Date: ${formattedDate}
 Time: ${formData.time}
@@ -95,6 +102,39 @@ ${formData.notes || "None"}`;
                         suppressHydrationWarning
                     />
                 </div>
+            </div>
+
+            {/* Booking Type Selection */}
+            <div className="space-y-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-50">
+                <Label className={labelClasses}>Who is this appointment for?</Label>
+                <div className="flex gap-4">
+                    {["Adult", "Child"].map((type) => (
+                        <label key={type} className={`
+                            flex-1 cursor-pointer rounded-lg border-2 p-3 text-center transition-all flex items-center justify-center gap-2
+                            ${formData.bookingType === type
+                                ? "border-dental-teal bg-teal-50 text-dental-teal-dark font-bold shadow-sm"
+                                : "border-slate-100 bg-white text-slate-500 hover:border-teal-200"}
+                        `}>
+                            <input
+                                type="radio"
+                                name="bookingType"
+                                value={type}
+                                checked={formData.bookingType === type}
+                                onChange={(e) => setFormData({ ...formData, bookingType: e.target.value })}
+                                className="sr-only"
+                            />
+                            {type === "Child" && <span className="text-lg">👶</span>}
+                            {type === "Adult" && <span className="text-lg">👤</span>}
+                            {type}
+                        </label>
+                    ))}
+                </div>
+                {formData.bookingType === "Child" && (
+                    <div className="text-sm text-dental-teal-dark bg-dental-teal/10 p-3 rounded-lg flex gap-2 items-start animate-fade-in">
+                        <span className="mt-0.5">🧸</span>
+                        <span>We'll schedule extra time for a comfortable, fear-free visit for your little one.</span>
+                    </div>
+                )}
             </div>
 
             <div className="space-y-1">

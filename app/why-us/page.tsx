@@ -139,8 +139,8 @@ export default function WhyUsPage() {
                                             <Award className="w-6 h-6 text-indigo-500 transition-transform duration-500 group-hover:scale-110" />
                                         </div>
                                         <div className="flex flex-col text-left">
-                                            <span className="font-display text-xl md:text-2xl font-bold text-slate-800 leading-none mb-1">15+</span>
-                                            <span className="text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider md:tracking-widest">Years Trust</span>
+                                            <span className="font-display text-xl md:text-2xl font-bold text-slate-800 leading-none mb-1">8/10</span>
+                                            <span className="text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-wider md:tracking-widest">Families Trust Us</span>
                                         </div>
                                     </div>
                                 </div>
@@ -183,6 +183,10 @@ export default function WhyUsPage() {
                                         {
                                             title: "Digital Diagnostics",
                                             desc: "Low-radiation digital X-rays give us an instant, crystal-clear view of your oral health."
+                                        },
+                                        {
+                                            title: "Pediatric Comfort Protocols",
+                                            desc: "We use 'Show-Tell-Do' and distraction techniques to make dentistry fun and fear-free for children."
                                         }
                                     ].map((item, i) => (
                                         <li key={i} className="flex gap-4">

@@ -102,7 +102,7 @@ export default function Home() {
                 variants={staggerContainer}
                 className="order-1 lg:order-1 space-y-6 md:space-y-8 pt-4"
               >
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-100 text-dental-teal font-semibold text-xs tracking-widest uppercase">
+                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pediatric-sage/20 border border-pediatric-sage/30 text-dental-teal-dark font-semibold text-xs tracking-widest uppercase">
                   <Star className="w-3 h-3 fill-dental-teal" />
                   Voted Top Dentist in Pune
                 </motion.div>
@@ -186,17 +186,21 @@ export default function Home() {
                 */}
         <section className="py-12 bg-white border-b border-stone-100">
           <div className="container px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center opacity-80 hover:opacity-100 transition-all duration-500">
               {[
-                { label: "15+ Years Experience", icon: Award },
-                { label: "12,000+ Happy Smiles", icon: Users },
-                { label: "Advanced Technology", icon: Microscope },
-                { label: "Certified Specialists", icon: CheckCircle2 }
+                { label: "450+ Happy Kids", icon: Baby, color: "text-pediatric-coral" },
+                { label: "Fear-Free Clinic", icon: Heart, color: "text-pediatric-sage" },
+                { label: "Pediatric Trained", icon: Award, color: "text-dental-teal" },
+                { label: "15+ Years Exp", icon: Shield, color: "text-pediatric-navy" }
               ].map((item, i) => (
                 <div key={i} className="flex items-center justify-center gap-3">
-                  <item.icon className="w-6 h-6 text-dental-teal" />
-                  <span className="font-display font-bold text-slate-800 text-lg">{item.label.split(' ')[0]}</span>
-                  <span className="hidden lg:inline text-sm font-medium text-slate-500">{item.label.split(' ').slice(1).join(' ')}</span>
+                  <div className={`p-2 rounded-full bg-stone-50 ${item.color}`}>
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="font-display font-bold text-slate-800 text-lg block leading-none">{item.label.split(' ').slice(0, -1).join(' ')}</span>
+                    <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">{item.label.split(' ').slice(-1)}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -236,7 +240,8 @@ export default function Home() {
                   title: "Pediatric (children) Dental Treatments",
                   desc: "Fun, gentle care for your little ones to build healthy habits.",
                   icon: Baby,
-                  for: "Pediatric Dentistry"
+                  for: "Pediatric Dentistry",
+                  highlight: true
                 }
               ].map((item, i) => (
                 <motion.div
@@ -245,17 +250,23 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group relative bg-white rounded-3xl p-8 border border-stone-100 hover:shadow-2xl hover:border-teal-100 transition-all duration-300 overflow-hidden"
+                  className={`group relative rounded-3xl p-8 border transition-all duration-300 overflow-hidden
+                    ${item.highlight
+                      ? "bg-pediatric-cream border-pediatric-sage/50 shadow-lg hover:shadow-xl hover:border-pediatric-sage"
+                      : "bg-white border-stone-100 hover:shadow-2xl hover:border-teal-100"
+                    }`}
                 >
-                  <div className="w-14 h-14 bg-dental-cream rounded-2xl flex items-center justify-center mb-6 group-hover:bg-dental-teal transition-colors duration-300">
-                    <item.icon className="w-7 h-7 text-amber-600 group-hover:text-white transition-colors" />
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
+                    ${item.highlight ? "bg-pediatric-sage/20 text-dental-teal-dark" : "bg-dental-cream group-hover:bg-dental-teal text-amber-600 group-hover:text-white"}`}>
+                    <item.icon className="w-7 h-7" />
                   </div>
                   <h3 className="font-display text-2xl font-bold text-dental-charcoal mb-2">{item.title}</h3>
                   <p className="text-slate-600 mb-6 leading-relaxed">{item.desc}</p>
 
                   <div className="pt-6 border-t border-slate-50 flex items-center justify-between">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.for}</span>
-                    <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-dental-teal group-hover:text-white transition-all">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all 
+                      ${item.highlight ? "bg-white text-dental-teal shadow-sm" : "bg-slate-50 group-hover:bg-dental-teal group-hover:text-white"}`}>
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -406,23 +417,23 @@ export default function Home() {
               <Accordion items={[
                 {
                   id: "1",
+                  trigger: "Do you treat specialized cases for children?",
+                  content: "Yes! Dr. Poonam is an expert in pediatric care. We handle everything from first checkups to cavity prevention and habit correction, ensuring your child actually enjoys the dentist."
+                },
+                {
+                  id: "2",
+                  trigger: "What if my child is afraid of the dentist?",
+                  content: "We use a 'Tell-Show-Do' technique. We introduce tools in a friendly way before doing anything. Our clinic is designed to be a fear-free zone with gentle staff and distractions."
+                },
+                {
+                  id: "3",
                   trigger: "Do you accept new patients?",
                   content: "Yes! We are currently welcoming new patients and families. You can often get an appointment within 24-48 hours."
                 },
                 {
-                  id: "2",
-                  trigger: "What about dental anxiety?",
-                  content: "We specialize in anxious patients. From our non-clinical environment to painless injection techniques and calming music, we do everything to make you comfortable."
-                },
-                {
-                  id: "3",
+                  id: "4",
                   trigger: "Are your prices transparent?",
                   content: "Absolutely. We provide a full cost breakdown before any treatment begins. No hidden fees, ever."
-                },
-                {
-                  id: "4",
-                  trigger: "Do you treat children?",
-                  content: "Yes, Dr. Poonam loves treating kids! We make their first visits fun and educational to build a lifetime of good habits."
                 }
               ]} />
             </div>

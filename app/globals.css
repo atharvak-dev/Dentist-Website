@@ -40,6 +40,12 @@
   /* Font families */
   --font-display: 'Playfair Display', serif;
   --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Pediatric Theme Colors */
+  --color-pediatric-sage: #A8DADC;
+  --color-pediatric-coral: #F4A261;
+  --color-pediatric-cream: #FFF8F0;
+  --color-pediatric-navy: #264653;
 }
 
 :root {

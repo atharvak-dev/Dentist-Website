@@ -270,8 +270,8 @@ export default function ServicesPage() {
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                                 className="font-display text-5xl md:text-7xl font-medium text-dental-charcoal mb-6 tracking-tight leading-[1]"
                             >
-                                Transform Your <br className="hidden md:block" />
-                                <span className="text-dental-teal italic">Smile</span> & Confidence
+                                Complete Care for <br className="hidden md:block" />
+                                <span className="text-dental-teal italic">Every Smile</span>
                             </motion.h1>
 
                             <motion.p
@@ -280,8 +280,8 @@ export default function ServicesPage() {
                                 transition={{ delay: 0.2, duration: 0.8 }}
                                 className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10"
                             >
-                                World-class dental care combining medical precision with a spa-like experience.
-                                Your journey to a perfect smile starts here.
+                                Specialized in pediatric dentistry with gentle, modern techniques for the whole family.
+                                From first teeth to forever smiles.
                             </motion.p>
 
                             <motion.div
@@ -531,6 +531,59 @@ export default function ServicesPage() {
                     </div>
                 </section>
 
+
+                {/* 
+                  === PEDIATRIC EXCELLENCE ===
+                */}
+                <section className="py-24 bg-pediatric-cream/50 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pediatric-sage/20 to-pediatric-coral/20" />
+                    <div className="container px-4 md:px-6">
+                        <SectionHeader
+                            center
+                            label="For Little Ones"
+                            title="Pediatric Excellence"
+                            subtitle="We understand that treating children requires a special touch. Our protocols are designed to build confidence from the very first visit."
+                        />
+
+                        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+                            {[
+                                {
+                                    title: "First Visit Magic",
+                                    desc: "We turn the dental chair into a spaceship and instruments into magic wands. No fear, just fun.",
+                                    icon: Sparkles,
+                                    color: "bg-[#F4A261]/10 text-[#F4A261]"
+                                },
+                                {
+                                    title: "Parent Partnership",
+                                    desc: "We invite you into the treatment room. We explain everything to you and your child in age-appropriate language.",
+                                    icon: Users,
+                                    color: "bg-[#A8DADC]/20 text-[#264653]"
+                                },
+                                {
+                                    title: "Growth Monitoring",
+                                    desc: "We track jaw development and alignment from age 1, catching potential issues early before they become problems.",
+                                    icon: Activity,
+                                    color: "bg-[#0d9488]/10 text-[#0d9488]"
+                                }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="bg-white p-8 rounded-3xl border border-stone-100 hover:border-pediatric-sage/50 shadow-sm hover:shadow-lg transition-all"
+                                >
+                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${item.color}`}>
+                                        <item.icon className="w-7 h-7" />
+                                    </div>
+                                    <h3 className="font-display text-2xl font-bold text-dental-charcoal mb-4">{item.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
                 {/* 
                   === TECHNOLOGY (Immersion) ===

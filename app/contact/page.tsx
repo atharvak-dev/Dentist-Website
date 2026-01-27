@@ -15,7 +15,10 @@ import {
     Mail,
     Car,
     ExternalLink,
-    Lock
+    Lock,
+    Calendar,
+    Users,
+    Heart
 } from "lucide-react"
 
 export default function ContactPage() {
@@ -132,8 +135,7 @@ export default function ContactPage() {
                                     Visit Us
                                 </h3>
                                 <p className="text-slate-700 text-sm leading-relaxed mb-4">
-                                    R B Ingale Plaza, Sinhagad Road,<br />
-                                    Pune 411041
+                                    R B Ingale Plaza, Ground Floor 5, Next to Uttam Sweets, Near Nanded City Circle, Sinhagad Road, Pune 411041
                                 </p>
                                 <p className="text-sm text-dental-teal font-semibold group-hover:underline">
                                     Get Directions →
@@ -177,6 +179,32 @@ export default function ContactPage() {
                                         <span>Fast Confirmation</span>
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* Reassurance Section (New) */}
+                            <div className="mt-12 grid md:grid-cols-3 gap-6">
+                                {[
+                                    { icon: Calendar, title: "Flexible Hours", desc: "School-friendly evening & weekend slots." },
+                                    { icon: Users, title: "Parents Welcome", desc: "You can stay with your child during treatment." },
+                                    { icon: Heart, title: "Emergency Ready", desc: "Immediate support for dental injuries." },
+                                ].map((item, i) => (
+                                    <div key={i} className="bg-white p-6 rounded-2xl border border-stone-100 flex flex-col items-center text-center shadow-sm">
+                                        <div className="w-10 h-10 rounded-full bg-pediatric-cream flex items-center justify-center text-pediatric-coral mb-3">
+                                            <item.icon className="w-5 h-5" />
+                                        </div>
+                                        <h4 className="font-bold text-dental-charcoal mb-1">{item.title}</h4>
+                                        <p className="text-xs text-slate-500">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="mt-8 flex justify-center gap-4 flex-wrap">
+                                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-800 text-xs font-semibold">
+                                    <Shield className="w-3 h-3" /> Pediatric Specialist
+                                </span>
+                                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-semibold">
+                                    <Lock className="w-3 h-3" /> Child-Safe Sedation Certified
+                                </span>
                             </div>
 
                             {/* Alternative Contact */}

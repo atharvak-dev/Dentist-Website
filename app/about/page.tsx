@@ -232,6 +232,9 @@ export default function AboutPage() {
                                         <li className="flex items-center gap-2">
                                             <CheckCircle2 className="w-4 h-4 text-dental-teal" /> Cosmetic Specialist
                                         </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-dental-teal" /> Pediatric Certified
+                                        </li>
                                     </ul>
                                 </div>
                             </motion.div>
@@ -260,7 +263,10 @@ export default function AboutPage() {
                                         But more importantly, she understands the person behind the smile.
                                     </p>
                                     <p>
-                                        Since earning her degree, she has treated over 12,000 patients—many of whom hadn't visited a dentist in a decade due to fear. Her approach is simple: <span className="text-dental-teal font-medium">Listen first. Explain everything. Never judge.</span>
+                                        Since earning her degree, she has treated over 12,000 patients. Her approach is simple: <span className="text-dental-teal font-medium">Listen first. Explain everything. Never judge.</span>
+                                    </p>
+                                    <p>
+                                        Dr. Poonam has completed advanced training in pediatric behavior management and is passionate about making every child's dental journey positive. Her gentle approach has helped over 400 children overcome dental anxiety.
                                     </p>
                                     <p>
                                         When she's not at the clinic, you'll find her guiding upcoming dentists or spending time with her family.
